@@ -1,6 +1,6 @@
 """
 
-	step 2: change the format to (.jpg)
+	step 2: change the format from (.tif) to (.jpg)
 
 """
 
@@ -31,19 +31,9 @@ for i in range(class_num):
 		img_dir = os.path.join(class_dir_original, img_name)
 		img = cv2.imread(img_dir, 1)
 
-		if filenameChange:
-			if img_name in filename_map_list:
-				img_dir_new = os.path.join(class_dir_new, filename_map_list[img_name] + '.jpg')
-			else:
-				img_count = img_count + 1
-				img_dir_new = os.path.join(class_dir_new, str(img_count) + '.jpg')
-				filename_map_list[img_name] = img_count
-				filename_map_list[img_count] = img_name
-		else:
-			img_dir_new = os.path.join(class_dir_new, img_name[:-4] + '.jpg')
-		# print(img.shape)
-
-		img.save(img_dir_new)
+		# img_name[:-4], '-4' is for the original filetype is '.tif'
+		img_dir_new = os.path.join(class_dir_new, img_name[:-4] + '.jpg')
+		cv2.imwrite(img_dir_new, img)
 
 
 print ('Done successfully!')
