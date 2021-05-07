@@ -8,8 +8,8 @@ import os.path
 import cv2
 import json
 
-work_dir = ".\\shangHeDouXingTai_O" # direction of your data
-output_dir = ".\\shangHeDouXingTai" # direction of output
+work_dir = ".\\shangHeDouNeiBiQianHouJuLi_14_O" # direction of your data
+output_dir = ".\\shangHeDouNeiBiQianHouJuLi_14_jpg" # direction of output
 if(not os.path.exists(output_dir)):
 	os.mkdir(output_dir)
 
@@ -33,7 +33,7 @@ for i in range(class_num):
 
 		# img_name[:-4], '-4' is for the original filetype is '.tif'
 		img_dir_new = os.path.join(class_dir_new, img_name[:-4] + '.jpg')
-		cv2.imwrite(img_dir_new, img)
+		cv2.imwrite(img_dir_new, img, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
 
 
 print ('Done successfully!')
